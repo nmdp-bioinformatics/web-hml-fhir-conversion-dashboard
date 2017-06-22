@@ -27,13 +27,13 @@
     };
 
     statusCtrl.downloadFhirXml = function (status) {
-      downloadService.downloadFhir(status.hmlId, true).then(function () {
+      downloadService.downloadFhir(status.fhirId, true).then(function () {
 
       });
     };
 
     statusCtrl.downloadFhirJson = function (status) {
-      downloadService.downloadFhir(status.hmlId).then(function () {
+      downloadService.downloadFhir(status.fhirId).then(function () {
 
       });
     };
