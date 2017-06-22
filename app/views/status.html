@@ -1,7 +1,89 @@
 <div class="row">
   <div class="col-xs-12">
-    <div class="row">
-
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="panel-title">Conversion Status</div>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-4">
+                <p>HML</p>
+              </div>
+              <div class="col-xs-4">
+                <p>Status</p>
+              </div>
+              <div class="col-xs-4">
+                <p>FHIR</p>
+              </div>
+            </div>
+            <div class="row" data-ng-repeat="status in statusCtrl.statuses">
+              <div class="col-xs-4">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <div class="panel-title">HML ({{ status.hmlId ? 'Completed' : 'Processing' }})</div>
+                      </div>
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-xs-4" data-ng-enabled="status.hmlId">
+                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.viewHml(status)"><p class="button-text">View</p></button>
+                          </div>
+                          <div class="col-xs-4" data-ng-enabled="status.hmlId">
+                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.downloadHmlXml(status)"><span class="glyphicon glyphicon-download button-glyphicon" /><p class="button-text">Xml</p></button>
+                          </div>
+                          <div class="col-xs-4" data-ng-enabled="status.hmlId">
+                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.downloadHmlJson(status)"><span class="glyphicon glyphicon-download button-glyphicon" /><p class="button-text">Json</p></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <label for="status">Status:</label>
+                    <p id="status">{{ status.status }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="panel panel-danger">
+                      <div class="panel-heading">
+                        <div class="panel-title">FHIR ({{ status.fhirId ? 'Completed' : 'Processing' }})</div>
+                      </div>
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-xs-4" data-ng-enabled="status.fhirId">
+                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.viewFhir(status)"><p class="button-text">View</p></button>
+                          </div>
+                          <div class="col-xs-4" data-ng-enabled="status.fhirId">
+                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.downloadFhirXml(status)"><span class="glyphicon glyphicon-download button-glyphicon" /><p class="button-text">Xml</p></button>
+                          </div>
+                          <div class="col-xs-4" data-ng-enabled="status.fhirId">
+                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.downloadFhirJson(status)"><span class="glyphicon glyphicon-download button-glyphicon" /><p class="button-text">Json</p></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <div class="col-xs-12">
+          <button type="button" class="btn btn-primary pull-right" data-ng-click="statusCtrl.refresh()">Refresh</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

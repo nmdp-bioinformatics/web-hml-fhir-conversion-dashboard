@@ -9,10 +9,10 @@
     statusCtrl.statuses = [];
 
     statusCtrl.refresh = function () {
-        statusService.getStatus().then(function (result) {
+        statusService.getStatus(5).then(function (result) {
             statusCtrl.statuses = result;
         });
-    }
+    };
   }
 
   angular.module('webHmlFhirConversionDashboardApp.controllers').controller('status', status);

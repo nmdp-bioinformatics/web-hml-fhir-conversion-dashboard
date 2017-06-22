@@ -14,6 +14,6 @@
       return factory;
   }
 
-  angular.module('').factory('headerFactory', headerFactory);
+  angular.module('webHmlFhirConversionDashboardApp.factories').factory('headerFactory', headerFactory);
   headerFactory.$inject = [];
 }());

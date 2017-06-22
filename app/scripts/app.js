@@ -8,6 +8,12 @@
  *
  * Main module of the application.
  */
+
+angular.module('webHmlFhirConversionDashboardApp.controllers', []);
+angular.module('webHmlFhirConversionDashboardApp.services', []);
+angular.module('webHmlFhirConversionDashboardApp.factories', []);
+angular.module('webHmlFhirConversionDashboardApp.config', []);
+
 angular
   .module('webHmlFhirConversionDashboardApp', [
     'ngAnimate',
@@ -17,7 +23,9 @@ angular
     'ngSanitize',
     'ngTouch',
     'webHmlFhirConversionDashboardApp.controllers',
-    'webHmlFhirConversionDashboardApp.services'
+    'webHmlFhirConversionDashboardApp.services',
+    'webHmlFhirConversionDashboardApp.factories',
+    'webHmlFhirConversionDashboardApp.config'
   ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -3,16 +3,16 @@
 
   function statusService($http, $q, headerFactory, appConfig) {
       var service = {
-          getStatus: function () {
+          getStatus: function (maxResults) {
               var defer = $q.defer(),
-                  url = appConfig.conversion_server_url + 'status';
+                  url = appConfig.conversion_server_url + 'status/' + maxResults;
 
               $http({
                 method: 'GET',
                 url: url,
                 headers: headerFactory.conversionServiceHeaders()
-              }).success(function (result) {
-                  defer.resolve(result);
+              }).then(function (result) {
+                  defer.resolve(result.data);
               });
 
               return defer.promise;
