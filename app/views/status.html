@@ -27,16 +27,12 @@
                         <div class="panel-title">HML ({{ status.hmlId ? 'Completed' : 'Processing' }})</div>
                       </div>
                       <div class="panel-body">
-                        <div class="row">
-                          <div class="col-xs-4" data-ng-enabled="status.hmlId">
-                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.viewHml(status)"><p class="button-text">View</p></button>
-                          </div>
-                          <div class="col-xs-4" data-ng-enabled="status.hmlId">
-                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.downloadHmlXml(status)"><span class="glyphicon glyphicon-download button-glyphicon" /><p class="button-text">Xml</p></button>
-                          </div>
-                          <div class="col-xs-4" data-ng-enabled="status.hmlId">
-                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.downloadHmlJson(status)"><span class="glyphicon glyphicon-download button-glyphicon" /><p class="button-text">Json</p></button>
-                          </div>
+                        <div class="row" data-ng-disabled="!status.hmlId">
+                          <span class="center-buttons">
+                            <button class="btn btn-info btn-sm" type="button" data-ng-click="statusCtrl.viewHml(status)">View</button>
+                            <button class="btn btn-info btn-sm" type="button" data-ng-click="statusCtrl.downloadHmlXml(status)"><span class="glyphicon glyphicon-download button-glyphicon" />Xml</button>
+                            <button class="btn btn-info btn-sm" type="button" data-ng-click="statusCtrl.downloadHmlJson(status)"><span class="glyphicon glyphicon-download button-glyphicon" />Json</button>
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -59,16 +55,12 @@
                         <div class="panel-title">FHIR ({{ status.fhirId ? 'Completed' : 'Processing' }})</div>
                       </div>
                       <div class="panel-body">
-                        <div class="row">
-                          <div class="col-xs-4" data-ng-enabled="status.fhirId">
-                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.viewFhir(status)"><p class="button-text">View</p></button>
-                          </div>
-                          <div class="col-xs-4" data-ng-enabled="status.fhirId">
-                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.downloadFhirXml(status)"><span class="glyphicon glyphicon-download button-glyphicon" /><p class="button-text">Xml</p></button>
-                          </div>
-                          <div class="col-xs-4" data-ng-enabled="status.fhirId">
-                            <button class="btn btn-info" type="button" data-ng-click="statusCtrl.downloadFhirJson(status)"><span class="glyphicon glyphicon-download button-glyphicon" /><p class="button-text">Json</p></button>
-                          </div>
+                        <div class="row" data-ng-disabled="!status.fhirId">
+                          <span class="center-buttons">
+                            <button class="btn btn-info btn-sm" type="button" data-ng-click="statusCtrl.viewFhir(status)">View</button>
+                            <button class="btn btn-info btn-sm" type="button" data-ng-click="statusCtrl.downloadFhirXml(status)"><span class="glyphicon glyphicon-download button-glyphicon" />Xml</button>
+                            <button class="btn btn-info btn-sm" type="button" data-ng-click="statusCtrl.downloadFhirJson(status)"><span class="glyphicon glyphicon-download button-glyphicon" />Json</button>
+                          </span>
                         </div>
                       </div>
                     </div>
