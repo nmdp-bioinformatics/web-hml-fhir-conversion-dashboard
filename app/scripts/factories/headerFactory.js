@@ -8,6 +8,12 @@
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
               };
+          },
+
+          uploadFileHeaders: function () {
+              return {
+                  'Content-Type': undefined
+              }
           }
       };
 

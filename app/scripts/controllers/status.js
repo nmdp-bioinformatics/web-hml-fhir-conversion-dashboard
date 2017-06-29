@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  function status($scope, statusService, downloadService) {
+  function status($scope, statusService, downloadService, uploadService) {
     /*jshint validthis: true */
     var statusCtrl = this;
 
@@ -34,11 +34,26 @@
 
     statusCtrl.downloadFhirJson = function (status) {
       downloadService.downloadFhir(status.fhirId).then(function () {
-
+          statusCtrl.refresh();
       });
     };
+
+    statusCtrl.convertHml = function () {
+      uploadService.uploadHml(statusCtrl.hmlFile, 'ns2:').then(function (result) {
+        statusCtrl.hmlFile = null;
+        statusCtrl.refresh();
+      });
+    };
+
+    statusCtrl.convertFhir = function () {
+        uploadService.uploadFhir(statusCtrl.fhirFile).then(function (result) {
+
+        });
+    };
+
+    statusCtrl.refresh();
   }
 
   angular.module('webHmlFhirConversionDashboardApp.controllers').controller('status', status);
-  status.$inject = ['$scope', 'statusService', 'downloadService'];
+  status.$inject = ['$scope', 'statusService', 'downloadService', 'uploadService'];
 }());
