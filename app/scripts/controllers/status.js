@@ -1,12 +1,13 @@
 (function () {
   'use strict';
 
-  function status($scope, statusService, downloadService, uploadService) {
+  function status($scope, statusService, downloadService, uploadService, submissionService) {
     /*jshint validthis: true */
     var statusCtrl = this;
 
     statusCtrl.scope = $scope;
     statusCtrl.statuses = [];
+    statusCtrl.submission = {};
 
     statusCtrl.refresh = function () {
       statusService.getStatus(5).then(function (result) {
@@ -51,9 +52,15 @@
         });
     };
 
+    statusCtrl.getSubmissionById = function (id) {
+      submissionService.getSubmission(id).then(function (result) {
+        statusCtrl.submission = result;
+      })
+    };
+
     statusCtrl.refresh();
   }
 
   angular.module('webHmlFhirConversionDashboardApp.controllers').controller('status', status);
-  status.$inject = ['$scope', 'statusService', 'downloadService', 'uploadService'];
+  status.$inject = ['$scope', 'statusService', 'downloadService', 'uploadService', 'submissionService'];
 }());
