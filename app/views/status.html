@@ -25,7 +25,7 @@
         <div class="col-xs-6">
           <div class="panel panel-danger">
             <div class="panel-heading">
-              <div class="panel-title">FHIR <i class="glyphicon glyphicon-arrow-right" /> HML</div>
+              <div class="panel-title">Pre-FHIR <i class="glyphicon glyphicon-arrow-right" /> HML</div>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -62,7 +62,7 @@
                 <h4 class="conversion-table-heading">Status</h4>
               </div>
               <div class="col-xs-4">
-                <h4 class="conversion-table-heading">FHIR</h4>
+                <h4 class="conversion-table-heading">Pre-FHIR</h4>
               </div>
             </div>
             <div class="row" data-ng-repeat="status in statusCtrl.statuses">
@@ -109,7 +109,7 @@
                   <div class="col-xs-12">
                     <div class="panel panel-danger">
                       <div class="panel-heading">
-                        <div class="panel-title">FHIR ({{ status.fhirId ? 'Completed' : 'Processing' }})</div>
+                        <div class="panel-title">Pre-FHIR ({{ status.fhirId ? 'Completed' : 'Processing' }})</div>
                       </div>
                       <div class="panel-body">
                         <div class="row" data-ng-disabled="!status.fhirId">
@@ -132,20 +132,20 @@
                         <div class="panel-title">FHIR RESOURCE VIEWER</div>
                       </div>
                       <div class="panel-body">
-                        <div data-ng-if="!statusCtrl.submission || statusCtrl.submission._id !== status.fhirSubmissionId">
+                        <div data-ng-if="!statusCtrl.submission || statusCtrl.submission.fhirId !== status.fhirSubmissionId">
                           <a data-ng-click="statusCtrl.getSubmissionById(status.fhirSubmissionId)">Get FHIR Resource Report</a>
                         </div>
-                        <div data-ng-if="statusCtrl.submission._id === status.fhirSubmissionId">
-                          <div data-ng-repeat="patient in statusCtrl.submission.submissionResult">
+                        <div data-ng-if="statusCtrl.submission.fhirId === status.fhirSubmissionId">
+                          <div data-ng-repeat="patient in statusCtrl.submission.patients">
                             <div class="row">
                               <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                  <div class="panel-title"><a href="{{ patient.patientResource.url }}">Patient ID: </a>{{ patient.patientId }}</div>
+                                  <div class="panel-title"><a href="{{ patient.patientUrl }}">Patient ID: {{ patient.patientId }}</a></div>
                                 </div>
                                 <div class="panel-body">
                                   <div class="row">
                                     <div class="col-xs-12">
-                                      <button type="link" class="btn btn-link" href="{{ patient.diagnosticReports[0].url }}">Diagnostic Report</button>
+                                      <a href="{{ patient.diagnosticReport.value }}">Diagnostic Report: {{ patient.diagnosticReport.key }}</a>
                                     </div>
                                   </div>
                                   <div class="row">
@@ -156,7 +156,7 @@
                                         </div>
                                         <div class="panel-body">
                                           <div data-ng-repeat="observation in patient.observations">
-                                            <div>{{observation}}</div>
+                                            <div><a href="{{ observation.value }}">{{ observation.key }}</a></div>
                                           </div>
                                         </div>
                                       </div>
